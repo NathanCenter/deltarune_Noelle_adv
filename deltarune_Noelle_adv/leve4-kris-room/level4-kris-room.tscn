@@ -1,0 +1,225 @@
+[gd_scene load_steps=23 format=3 uid="uid://drsx1d10mrftp"]
+
+[ext_resource type="Texture2D" uid="uid://h5vamg0rvd3x" path="res://leve4-kris-room/PC _ Computer - Deltarune - Backgrounds - Toriel's House-krisRoom.png" id="1_723ta"]
+[ext_resource type="PackedScene" uid="uid://cuxxb1nr4ppry" path="res://talking_head/DialogueBox.tscn" id="1_l5xu2"]
+[ext_resource type="Script" path="res://player/noelle_player_body.gd" id="2_p5a3v"]
+[ext_resource type="Texture2D" uid="uid://dhol847drpmmm" path="res://player/noelle_sprite_grid_fixed_22h.png" id="3_7ucvv"]
+[ext_resource type="Script" path="res://leve4-kris-room/blood.gd" id="5_5vsr7"]
+
+[sub_resource type="Animation" id="Animation_xajlo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_eajw5"]
+resource_name = "move_down"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_fccd1"]
+resource_name = "move_left"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [44, 45, 46, 47, 48, 49, 50, 47, 48, 50, 47, 50, 50]
+}
+
+[sub_resource type="Animation" id="Animation_cgprs"]
+resource_name = "move_right"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [56, 57, 58, 55, 56, 57, 58, 56, 57, 58, 55, 56, 57, 58, 57]
+}
+
+[sub_resource type="Animation" id="Animation_byfp8"]
+resource_name = "move_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 15, 16, 17, 18]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hgyo1"]
+_data = {
+"RESET": SubResource("Animation_xajlo"),
+"move_down": SubResource("Animation_eajw5"),
+"move_left": SubResource("Animation_fccd1"),
+"move_right": SubResource("Animation_cgprs"),
+"move_up": SubResource("Animation_byfp8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkk7h"]
+size = Vector2(25, 46.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjos6"]
+size = Vector2(30.25, 30.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v6bs"]
+size = Vector2(222, 36.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bqff"]
+size = Vector2(315.5, 141)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqnwb"]
+size = Vector2(189, 239)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrpft"]
+size = Vector2(44.5, 46.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxgav"]
+size = Vector2(38.5, 333.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llnfw"]
+size = Vector2(475, 75.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_symli"]
+size = Vector2(105, 39.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_my415"]
+size = Vector2(319, 68.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7byp"]
+size = Vector2(51, 70)
+
+[node name="Level4-kris-room" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" parent="CanvasLayer" instance=ExtResource("1_l5xu2")]
+visible = false
+layout_direction = 1
+anchors_preset = -1
+anchor_top = 1.0
+offset_left = 474.0
+offset_top = -150.0
+offset_right = -474.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(167, 124)
+texture = ExtResource("1_723ta")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(201, 251)
+script = ExtResource("2_p5a3v")
+
+[node name="noelle_player_charasprite" type="Sprite2D" parent="Player"]
+texture_filter = 1
+position = Vector2(-32, -30)
+texture = ExtResource("3_7ucvv")
+hframes = 22
+vframes = 5
+metadata/_edit_group_ = true
+
+[node name="PlayerAnimation" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_hgyo1")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-33, -30.25)
+shape = SubResource("RectangleShape2D_vkk7h")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-167, -54)
+zoom = Vector2(3.4, 3.4)
+
+[node name="interacitve objects" type="Node" parent="."]
+
+[node name="blood" type="Area2D" parent="interacitve objects"]
+script = ExtResource("5_5vsr7")
+
+[node name="blood" type="CollisionShape2D" parent="interacitve objects/blood"]
+position = Vector2(278, 170)
+shape = SubResource("RectangleShape2D_gjos6")
+
+[node name="invisible wall" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(525, 190)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-489, 37)
+shape = SubResource("RectangleShape2D_0v6bs")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(433.75, 7.5)
+shape = SubResource("RectangleShape2D_0bqff")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-579, -91)
+shape = SubResource("RectangleShape2D_qqnwb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-261, -73.4375)
+shape = SubResource("RectangleShape2D_nrpft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-221.25, -64)
+shape = SubResource("RectangleShape2D_cxgav")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-394, -189)
+shape = SubResource("RectangleShape2D_llnfw")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-280.5, 36.75)
+shape = SubResource("RectangleShape2D_symli")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-342.5, -118.25)
+shape = SubResource("RectangleShape2D_my415")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-452.5, -64)
+shape = SubResource("RectangleShape2D_c7byp")
+
+[connection signal="body_entered" from="interacitve objects/blood" to="interacitve objects/blood" method="_on_body_entered"]

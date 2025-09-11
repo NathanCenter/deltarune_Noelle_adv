@@ -1,0 +1,242 @@
+[gd_scene load_steps=26 format=3 uid="uid://se44k81ifd1i"]
+
+[ext_resource type="Texture2D" uid="uid://bcutrwjr0u6mj" path="res://level3/toriel_house_transparent-hallway.png" id="1_sm2j4"]
+[ext_resource type="PackedScene" uid="uid://cuxxb1nr4ppry" path="res://talking_head/DialogueBox.tscn" id="1_y1vu0"]
+[ext_resource type="Script" path="res://player/noelle_player_body.gd" id="3_nd0uc"]
+[ext_resource type="Texture2D" uid="uid://dhol847drpmmm" path="res://player/noelle_sprite_grid_fixed_22h.png" id="4_yqh54"]
+[ext_resource type="Script" path="res://player/ExitToLevel1.gd" id="5_7oe5j"]
+[ext_resource type="Script" path="res://level3/BookShelf.gd" id="6_oaws3"]
+[ext_resource type="Script" path="res://level3/Painting.gd" id="7_2ssue"]
+
+[sub_resource type="Animation" id="Animation_xajlo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_eajw5"]
+resource_name = "move_down"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_fccd1"]
+resource_name = "move_left"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [44, 45, 46, 47, 48, 49, 50, 47, 48, 50, 47, 50, 50]
+}
+
+[sub_resource type="Animation" id="Animation_cgprs"]
+resource_name = "move_right"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [56, 57, 58, 55, 56, 57, 58, 56, 57, 58, 55, 56, 57, 58, 57]
+}
+
+[sub_resource type="Animation" id="Animation_byfp8"]
+resource_name = "move_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 15, 16, 17, 18]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hgyo1"]
+_data = {
+"RESET": SubResource("Animation_xajlo"),
+"move_down": SubResource("Animation_eajw5"),
+"move_left": SubResource("Animation_fccd1"),
+"move_right": SubResource("Animation_cgprs"),
+"move_up": SubResource("Animation_byfp8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ri5u6"]
+size = Vector2(25, 46.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpjib"]
+size = Vector2(530, 36.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxabk"]
+size = Vector2(315.5, 141)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vo2mw"]
+size = Vector2(189, 239)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ss55x"]
+size = Vector2(44.5, 65.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygcj4"]
+size = Vector2(497, 333.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j13ti"]
+size = Vector2(475, 75.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys541"]
+size = Vector2(100, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28flc"]
+size = Vector2(319, 24.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6ksg"]
+size = Vector2(43, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfbrd"]
+size = Vector2(50, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xq8dp"]
+size = Vector2(46, 34)
+
+[node name="Hallway" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" parent="CanvasLayer" instance=ExtResource("1_y1vu0")]
+visible = false
+layout_direction = 1
+anchors_preset = -1
+anchor_top = 1.0
+offset_left = 474.0
+offset_top = -150.0
+offset_right = -474.0
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(229, 81)
+texture = ExtResource("1_sm2j4")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(425, 120)
+script = ExtResource("3_nd0uc")
+
+[node name="noelle_player_charasprite" type="Sprite2D" parent="Player"]
+texture_filter = 1
+position = Vector2(-32, -30)
+texture = ExtResource("4_yqh54")
+hframes = 22
+vframes = 5
+metadata/_edit_group_ = true
+
+[node name="PlayerAnimation" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_hgyo1")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-33, -30.25)
+shape = SubResource("RectangleShape2D_ri5u6")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-167, -54)
+zoom = Vector2(3.4, 3.4)
+
+[node name="invisible wall" type="StaticBody2D" parent="."]
+position = Vector2(525, 190)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-243, -39.75)
+shape = SubResource("RectangleShape2D_kpjib")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(433.75, 7.5)
+shape = SubResource("RectangleShape2D_bxabk")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-598, -91)
+shape = SubResource("RectangleShape2D_vo2mw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(47, -30)
+shape = SubResource("RectangleShape2D_ss55x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(167.5, -56.25)
+shape = SubResource("RectangleShape2D_ygcj4")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-391, -191.75)
+shape = SubResource("RectangleShape2D_j13ti")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-107, -186)
+shape = SubResource("RectangleShape2D_ys541")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-342.5, -140.25)
+shape = SubResource("RectangleShape2D_28flc")
+
+[node name="ExitToLevel1" type="Node2D" parent="."]
+
+[node name="ExitToLevel1" type="Area2D" parent="ExitToLevel1"]
+script = ExtResource("5_7oe5j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitToLevel1/ExitToLevel1"]
+position = Vector2(392.5, 41)
+shape = SubResource("RectangleShape2D_i6ksg")
+
+[node name="interacitve objects" type="Node2D" parent="."]
+
+[node name="BookShelf" type="Area2D" parent="interacitve objects"]
+script = ExtResource("6_oaws3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interacitve objects/BookShelf"]
+position = Vector2(318, 61.5)
+shape = SubResource("RectangleShape2D_hfbrd")
+
+[node name="Painting" type="Area2D" parent="interacitve objects"]
+script = ExtResource("7_2ssue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interacitve objects/Painting"]
+position = Vector2(158, 65)
+shape = SubResource("RectangleShape2D_xq8dp")
+
+[connection signal="body_entered" from="ExitToLevel1/ExitToLevel1" to="ExitToLevel1/ExitToLevel1" method="_on_body_entered"]
+[connection signal="body_entered" from="interacitve objects/BookShelf" to="interacitve objects/BookShelf" method="_on_body_entered"]
+[connection signal="body_entered" from="interacitve objects/Painting" to="interacitve objects/Painting" method="_on_body_entered"]

@@ -1,0 +1,283 @@
+[gd_scene load_steps=31 format=3 uid="uid://n8cwimp86b7g"]
+
+[ext_resource type="PackedScene" uid="uid://cuxxb1nr4ppry" path="res://talking_head/DialogueBox.tscn" id="1_2wjmo"]
+[ext_resource type="Texture2D" uid="uid://cyuih5og6ltla" path="res://backgrounds/toriel_house_transparent_inside.png" id="2_xsgiy"]
+[ext_resource type="Script" path="res://player/noelle_player_body.gd" id="3_kavd8"]
+[ext_resource type="Texture2D" uid="uid://dhol847drpmmm" path="res://player/noelle_sprite_grid_fixed_22h.png" id="4_07ox1"]
+[ext_resource type="Script" path="res://talking_head/scripts/tv.gd" id="5_euk6f"]
+[ext_resource type="Script" path="res://talking_head/scripts/frige.gd" id="6_vy4gk"]
+[ext_resource type="Script" path="res://talking_head/scripts/Stove.gd" id="7_v2ri3"]
+[ext_resource type="Script" path="res://player/ExitToLevel2.gd" id="8_m2ytu"]
+[ext_resource type="Script" path="res://player/ExitToLevel3.gd" id="9_y0om7"]
+
+[sub_resource type="Animation" id="Animation_xajlo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_eajw5"]
+resource_name = "move_down"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_fccd1"]
+resource_name = "move_left"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [44, 45, 46, 47, 48, 49, 50, 47, 48, 50, 47, 50, 50]
+}
+
+[sub_resource type="Animation" id="Animation_cgprs"]
+resource_name = "move_right"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [56, 57, 58, 55, 56, 57, 58, 56, 57, 58, 55, 56, 57, 58, 57]
+}
+
+[sub_resource type="Animation" id="Animation_byfp8"]
+resource_name = "move_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("noelle_player_charasprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 15, 16, 17, 18]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hgyo1"]
+_data = {
+"RESET": SubResource("Animation_xajlo"),
+"move_down": SubResource("Animation_eajw5"),
+"move_left": SubResource("Animation_fccd1"),
+"move_right": SubResource("Animation_cgprs"),
+"move_up": SubResource("Animation_byfp8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7lgb"]
+size = Vector2(25, 46.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_siiby"]
+size = Vector2(47, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddohc"]
+size = Vector2(196, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sd4jh"]
+size = Vector2(32, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljhnb"]
+size = Vector2(176, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc5ry"]
+size = Vector2(46, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3tuc"]
+size = Vector2(18, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2lm8"]
+size = Vector2(315.5, 141)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2vib"]
+size = Vector2(189, 239)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w45s2"]
+size = Vector2(44.5, 65.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onvle"]
+size = Vector2(784, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6kqe"]
+size = Vector2(19, 81)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eijno"]
+size = Vector2(17, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abt3w"]
+size = Vector2(49, 193)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vx1b"]
+size = Vector2(39, 66)
+
+[node name="Level1-Dreemer household" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" parent="CanvasLayer" instance=ExtResource("1_2wjmo")]
+visible = false
+layout_direction = 1
+anchors_preset = -1
+anchor_top = 1.0
+offset_left = 474.0
+offset_top = -150.0
+offset_right = -474.0
+
+[node name="background" type="Node2D" parent="."]
+position = Vector2(331, 107)
+
+[node name="Sprite2D" type="Sprite2D" parent="background"]
+position = Vector2(16, 0)
+texture = ExtResource("2_xsgiy")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(639, 127)
+script = ExtResource("3_kavd8")
+
+[node name="noelle_player_charasprite" type="Sprite2D" parent="Player"]
+texture_filter = 1
+position = Vector2(-75, 18)
+texture = ExtResource("4_07ox1")
+hframes = 22
+vframes = 5
+metadata/_edit_group_ = true
+
+[node name="PlayerAnimation" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_hgyo1")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-76, 17.75)
+shape = SubResource("RectangleShape2D_j7lgb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(337, 106)
+offset = Vector2(12, 0)
+zoom = Vector2(3.47, 3.47)
+
+[node name="interacitve objects" type="Node" parent="."]
+
+[node name="tv" type="Area2D" parent="interacitve objects"]
+position = Vector2(331, 107)
+script = ExtResource("5_euk6f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interacitve objects/tv"]
+position = Vector2(154.5, -13.5)
+shape = SubResource("RectangleShape2D_siiby")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="interacitve objects/tv"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interacitve objects/tv/StaticBody2D"]
+position = Vector2(164, -18.5)
+shape = SubResource("RectangleShape2D_ddohc")
+
+[node name="Refrigerators" type="Area2D" parent="interacitve objects"]
+position = Vector2(331, 107)
+script = ExtResource("6_vy4gk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interacitve objects/Refrigerators"]
+position = Vector2(-131, 4)
+shape = SubResource("RectangleShape2D_sd4jh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="interacitve objects/Refrigerators"]
+position = Vector2(-129, 3.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interacitve objects/Refrigerators/StaticBody2D"]
+position = Vector2(68, -30.25)
+shape = SubResource("RectangleShape2D_ljhnb")
+
+[node name="Stove" type="Area2D" parent="interacitve objects"]
+script = ExtResource("7_v2ri3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interacitve objects/Stove"]
+position = Vector2(279, 96.5)
+shape = SubResource("RectangleShape2D_jc5ry")
+
+[node name="invisible wall" type="StaticBody2D" parent="."]
+position = Vector2(331, 107)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-134, -11.5)
+shape = SubResource("RectangleShape2D_t3tuc")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(433.75, 7.5)
+shape = SubResource("RectangleShape2D_q2lm8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-347, -19)
+shape = SubResource("RectangleShape2D_o2vib")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(47, -30)
+shape = SubResource("RectangleShape2D_w45s2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(24, 93)
+shape = SubResource("RectangleShape2D_onvle")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-158.5, -39.5)
+shape = SubResource("RectangleShape2D_w6kqe")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="invisible wall"]
+position = Vector2(-216.5, -40)
+shape = SubResource("RectangleShape2D_eijno")
+
+[node name="ExitToLevel2" type="Node2D" parent="."]
+
+[node name="ExitToLevel2" type="Area2D" parent="ExitToLevel2"]
+script = ExtResource("8_m2ytu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitToLevel2/ExitToLevel2"]
+position = Vector2(615.5, 90)
+shape = SubResource("RectangleShape2D_abt3w")
+
+[node name="ExitToLevel3" type="Node2D" parent="."]
+
+[node name="ExitToLevel3" type="Area2D" parent="ExitToLevel3"]
+script = ExtResource("9_y0om7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitToLevel3/ExitToLevel3"]
+position = Vector2(144, 59)
+shape = SubResource("RectangleShape2D_8vx1b")
+
+[connection signal="body_entered" from="ExitToLevel2/ExitToLevel2" to="ExitToLevel2/ExitToLevel2" method="_on_body_entered"]
+[connection signal="body_entered" from="ExitToLevel3/ExitToLevel3" to="ExitToLevel3/ExitToLevel3" method="_on_body_entered"]
