@@ -8,11 +8,8 @@ extends Area2D
 var player_in_range := false
 var current_line: int = 0
 var dialogue_lines = [
-	{"text": "You eye the odd blood stain", "image": ""},
-	{"text": "G-gross is that dried blood...", "image": "res://talking_head/noellee/noelle_heads_clean_nopink_sigel_very_scared.png"},
-	{"text": "...ok... its not your mess... its Kris's ... they are responable for keeping thier room clean ...not you", "image": "res://talking_head/noellee/noelle_heads_clean_nopink_sigel_mad.png"},
-	{"text": "although...", "image": "res://talking_head/noellee/noelle_heads_clean_nopink_sigel_relaxing.png"},
-	{"text": "I really want to clean it ...  its bugging me.", "image": "res://talking_head/noellee/noelle_heads_clean_nopink_sigel_thinking.png"}
+	{"text": "You eye the bed", "image": ""},
+	{"text": "Huh where is Kris...", "image": "res://talking_head/noellee/noelle_heads_clean_nopink_sigel_curious.png"}
 ]
 
 # Typing effect variables
@@ -29,12 +26,12 @@ func _ready():
 func _on_body_entered(body):
 	if body.name == "Player":
 		player_in_range = true
-		print("Player near blood")
+		print("Player near bed")
 
 func _on_body_exited(body):
 	if body.name == "Player":
 		player_in_range = false
-		print("Player left blood")
+		print("Player left bed")
 
 func _process(delta):
 	if player_in_range and Input.is_action_just_pressed("interact"):
@@ -93,7 +90,7 @@ func show_line(line_index):
 			talking_head.hide()
 	
 	# Start typing effect
-	current_text = dialogue["text"]
+	current_text = "* " + dialogue["text"] 
 	dialog_text.text = ""
 	typing_index = 0
 	is_typing = true

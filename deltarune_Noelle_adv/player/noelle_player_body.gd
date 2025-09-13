@@ -3,6 +3,21 @@ extends CharacterBody2D
 @onready var anim_sprite: = $PlayerAnimation
 @export var speed := 100.0
 var can_move = true
+# suppost to stop the animtion.
+func freeze():
+	can_move = false
+	velocity = Vector2.ZERO
+	if has_node("PlayerAnimation"):
+		get_node("PlayerAnimation").stop()
+	elif has_node("PlayerAnimation"):
+		get_node("PlayerAnimation").stop()
+
+func unfreeze():
+	can_move = true
+	if has_node("PlayerAnimation"):
+		get_node("PlayerAnimation").play("idle")
+	elif has_node("PlayerAnimation"):
+		get_node("PlayerAnimation").play("idle")
 func _physics_process(delta):
 	var dir = Vector2.ZERO
 	if can_move:
